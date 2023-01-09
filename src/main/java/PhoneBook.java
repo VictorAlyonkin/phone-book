@@ -27,6 +27,12 @@ public class PhoneBook {
     }
 
     public String findByName(String name) {
+        Set<Map.Entry<String, String>> entrySet = phoneNumbers.entrySet();
+        for (Map.Entry<String, String> pair : entrySet) {
+            if (name.equals(pair.getValue())) {
+                return pair.getKey();
+            }
+        }
         return null;
     }
 }
