@@ -2,9 +2,12 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.SortedSet;
+import java.util.TreeSet;
+
 public class PhoneBookTest {
     public static final String goodPhoneNumber = "89281112233";
-    public static final String goodName = "89281112233";
+    public static final String goodName = "Jack";
 
     public static final String badPhoneNumber = "9281112233";
     public static final String badName = null;
@@ -28,30 +31,49 @@ public class PhoneBookTest {
     @Test
     public void successFindByNumber() {
         phoneBook.add(goodPhoneNumber, goodName);
-        String number = phoneBook.findByNumber(goodPhoneNumber);
-        Assertions.assertNotNull(number);
-        Assertions.assertEquals(goodPhoneNumber, number);
+        String name = phoneBook.findByNumber(goodPhoneNumber);
+        Assertions.assertNotNull(name);
+        Assertions.assertEquals(goodName, name);
     }
 
     @Test
     public void notSuccessFindByNumber() {
         phoneBook.add(badPhoneNumber, badName);
-        String number = phoneBook.findByNumber(badPhoneNumber);
-        Assertions.assertNull(number);
+        String name = phoneBook.findByNumber(badPhoneNumber);
+        Assertions.assertNull(name);
     }
 
     @Test
     public void successFindByName() {
         phoneBook.add(goodPhoneNumber, goodName);
-        String number = phoneBook.findByName(goodPhoneNumber);
-        Assertions.assertNotNull(number);
-        Assertions.assertEquals(goodPhoneNumber, number);
+        String name = phoneBook.findByName(goodName);
+        Assertions.assertNotNull(name);
+        Assertions.assertEquals(goodPhoneNumber, name);
     }
 
     @Test
     public void notSuccessFindName() {
         phoneBook.add(badPhoneNumber, badName);
-        String number = phoneBook.findByName(badPhoneNumber);
+        String number = phoneBook.findByName(badName);
         Assertions.assertNull(number);
+    }
+
+    @Test
+    public void successPrintAllNames() {
+        SortedSet<String> expectedNames = new TreeSet<>();
+        expectedNames.add(goodName);
+
+        phoneBook.add(goodPhoneNumber, goodName);
+        SortedSet<String> actualNames = phoneBook.printAllNames();
+
+        Assertions.assertNotNull(actualNames);
+        Assertions.assertEquals(goodPhoneNumber, actualNames);
+    }
+
+    @Test
+    public void notSuccessPrintAllNames() {
+        phoneBook.add(badPhoneNumber, badName);
+        SortedSet<String> names = phoneBook.printAllNames();
+        Assertions.assertNull(names);
     }
 }

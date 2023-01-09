@@ -1,5 +1,6 @@
 import java.util.Map;
 import java.util.Set;
+import java.util.SortedSet;
 import java.util.TreeMap;
 
 public class PhoneBook {
@@ -9,7 +10,7 @@ public class PhoneBook {
         this.phoneNumbers = new TreeMap<>();
     }
 
-    public boolean add(String name, String number) {
+    public boolean add(String number, String name) {
         if (number != null &&
                 number.length() == 11 &&
                 name != null) {
@@ -33,6 +34,10 @@ public class PhoneBook {
                 return pair.getKey();
             }
         }
+        return null;
+    }
+
+    public SortedSet<String> printAllNames() {
         return null;
     }
 }
