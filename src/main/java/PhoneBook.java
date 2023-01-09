@@ -1,4 +1,5 @@
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeMap;
 
 public class PhoneBook {
@@ -8,20 +9,24 @@ public class PhoneBook {
         this.phoneNumbers = new TreeMap<>();
     }
 
-    public boolean add(String name, String number){
+    public boolean add(String name, String number) {
         if (number != null &&
                 number.length() == 11 &&
-                name != null){
+                name != null) {
             phoneNumbers.put(number, name);
             return true;
         }
         return false;
     }
 
-    public String findByNumber(String findNumber) {
-        String name = phoneNumbers.get(findNumber);
-            if (name != null)
-                return name;
+    public String findByNumber(String number) {
+        String name = phoneNumbers.get(number);
+        if (name != null)
+            return name;
+        return null;
+    }
+
+    public String findByName(String name) {
         return null;
     }
 }

@@ -39,4 +39,19 @@ public class PhoneBookTest {
         String number = phoneBook.findByNumber(badPhoneNumber);
         Assertions.assertNull(number);
     }
+
+    @Test
+    public void successFindByName() {
+        phoneBook.add(goodPhoneNumber, goodName);
+        String number = phoneBook.findByName(goodPhoneNumber);
+        Assertions.assertNotNull(number);
+        Assertions.assertEquals(goodPhoneNumber, number);
+    }
+
+    @Test
+    public void notSuccessFindName() {
+        phoneBook.add(badPhoneNumber, badName);
+        String number = phoneBook.findByName(badPhoneNumber);
+        Assertions.assertNull(number);
+    }
 }
