@@ -17,17 +17,17 @@ public class PhoneBookTest {
 
     @Test
     public void successAdd() {
-        Assertions.assertTrue(phoneBook.add(goodName, goodPhoneNumber));
+        Assertions.assertTrue(phoneBook.add(goodPhoneNumber, goodName));
     }
 
     @Test
     public void notSuccessAdd() {
-        Assertions.assertFalse(phoneBook.add(badName, badPhoneNumber));
+        Assertions.assertFalse(phoneBook.add(badPhoneNumber, badName));
     }
 
     @Test
     public void successFindByNumber() {
-        phoneBook.add(goodName, goodPhoneNumber);
+        phoneBook.add(goodPhoneNumber, goodName);
         String number = phoneBook.findByNumber(goodPhoneNumber);
         Assertions.assertNotNull(number);
         Assertions.assertEquals(goodPhoneNumber, number);
@@ -35,7 +35,7 @@ public class PhoneBookTest {
 
     @Test
     public void notSuccessFindByNumber() {
-        phoneBook.add(badName, badPhoneNumber);
+        phoneBook.add(badPhoneNumber, badName);
         String number = phoneBook.findByNumber(badPhoneNumber);
         Assertions.assertNull(number);
     }

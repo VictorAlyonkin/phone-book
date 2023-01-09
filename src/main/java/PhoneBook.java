@@ -12,13 +12,16 @@ public class PhoneBook {
         if (number != null &&
                 number.length() == 11 &&
                 name != null){
-            phoneNumbers.put(name, number);
+            phoneNumbers.put(number, name);
             return true;
         }
         return false;
     }
 
     public String findByNumber(String findNumber) {
+        String name = phoneNumbers.get(findNumber);
+            if (name != null)
+                return name;
         return null;
     }
 }
