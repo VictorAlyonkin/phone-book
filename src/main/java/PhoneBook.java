@@ -34,7 +34,7 @@ public class PhoneBook {
         return null;
     }
 
-    public SortedSet<String> printAllNames(){
+    public SortedSet<String> printAllNames() {
         SortedSet<String> values = new TreeSet<>(phoneNumbers.values());
         if (values.isEmpty())
             return null;
