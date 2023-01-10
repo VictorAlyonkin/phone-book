@@ -1,7 +1,4 @@
-import java.util.Map;
-import java.util.Set;
-import java.util.SortedSet;
-import java.util.TreeMap;
+import java.util.*;
 
 public class PhoneBook {
     private Map<String, String> phoneNumbers;
@@ -37,7 +34,11 @@ public class PhoneBook {
         return null;
     }
 
-    public SortedSet<String> printAllNames() {
-        return null;
+    public SortedSet<String> printAllNames(){
+        SortedSet<String> values = new TreeSet<>(phoneNumbers.values());
+        if (values.isEmpty())
+            return null;
+        values.forEach(System.out::println);
+        return values;
     }
 }

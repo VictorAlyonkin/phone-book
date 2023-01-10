@@ -2,6 +2,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Collections;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -60,14 +61,13 @@ public class PhoneBookTest {
 
     @Test
     public void successPrintAllNames() {
-        SortedSet<String> expectedNames = new TreeSet<>();
-        expectedNames.add(goodName);
+        SortedSet<String> expectedNames = new TreeSet<>(Collections.singleton(goodName));
 
         phoneBook.add(goodPhoneNumber, goodName);
         SortedSet<String> actualNames = phoneBook.printAllNames();
 
         Assertions.assertNotNull(actualNames);
-        Assertions.assertEquals(goodPhoneNumber, actualNames);
+        Assertions.assertEquals(expectedNames, actualNames);
     }
 
     @Test
