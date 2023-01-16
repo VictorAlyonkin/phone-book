@@ -1,10 +1,11 @@
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class PhoneBook {
     private Map<String, String> phoneNumbers;
 
     public PhoneBook() {
-        this.phoneNumbers = new TreeMap<>();
+        this.phoneNumbers = new HashMap<>();
     }
 
     public boolean add(String number, String name) {
@@ -25,13 +26,12 @@ public class PhoneBook {
     }
 
     public String findByName(String name) {
-        Set<Map.Entry<String, String>> entrySet = phoneNumbers.entrySet();
-        for (Map.Entry<String, String> pair : entrySet) {
-            if (name.equals(pair.getValue())) {
-                return pair.getKey();
-            }
-        }
-        return null;
+        Map<String, String> phoneNumbers = this.phoneNumbers
+                .entrySet()
+                .stream()
+                .collect(Collectors.toMap(Map.Entry::getValue, Map.Entry::getKey));
+
+        return phoneNumbers.get(name);
     }
 
     public SortedSet<String> printAllNames() {

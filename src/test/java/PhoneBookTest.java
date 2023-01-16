@@ -33,7 +33,6 @@ public class PhoneBookTest {
     public void successFindByNumber() {
         phoneBook.add(goodPhoneNumber, goodName);
         String name = phoneBook.findByNumber(goodPhoneNumber);
-        Assertions.assertNotNull(name);
         Assertions.assertEquals(goodName, name);
     }
 
@@ -48,7 +47,6 @@ public class PhoneBookTest {
     public void successFindByName() {
         phoneBook.add(goodPhoneNumber, goodName);
         String name = phoneBook.findByName(goodName);
-        Assertions.assertNotNull(name);
         Assertions.assertEquals(goodPhoneNumber, name);
     }
 
@@ -65,8 +63,6 @@ public class PhoneBookTest {
 
         phoneBook.add(goodPhoneNumber, goodName);
         SortedSet<String> actualNames = phoneBook.printAllNames();
-
-        Assertions.assertNotNull(actualNames);
         Assertions.assertEquals(expectedNames, actualNames);
     }
 
